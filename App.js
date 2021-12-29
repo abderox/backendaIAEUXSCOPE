@@ -1,7 +1,6 @@
 const  express = require('express');
 const app = express();
 const userRoutes = require('./api/routes/users');
-const personRoutes = require('./api/routes/persons');
 const todoRoutes = require('./api/routes/todo');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -44,7 +43,6 @@ app.use((req, res, next) => {
 })
 //routes  .... 
 app.use('/users', userRoutes );
-app.use('/persons', personRoutes );
 app.use('/todo', todoRoutes );
 
 //errors handling ....
