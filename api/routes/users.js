@@ -28,6 +28,6 @@ const  upload = multer({
 // 
 router.post('/register',upload.single('personImage'),userController.register)
 router.get('/test',userController.get)
-router.get('/profile/:id',checkAuth,userController.get_profile)
+router.get('/profile',checkAuth,userController.get_profile)
 router.post('/login', userController.login)
 module.exports = router;

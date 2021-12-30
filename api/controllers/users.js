@@ -25,7 +25,6 @@ exports.login = (req, res, next)=>{
                });
 
            return   res.status(200).json({
-            id : users[0]._id,
                  result : token
              })
           }
@@ -86,7 +85,6 @@ exports.register = (req, res, next) => {
                             expiresIn: "2h"  
                         });
                         res.status(200).json({
-                            id: user._id,
                             result :  token
                         });
                     })
@@ -108,8 +106,7 @@ exports.register = (req, res, next) => {
   
 }
 exports.get_profile = (req, res) => {
-    const id = req.params.id;
-    User.findById(id)
+    User.findById( req.userData.userId)
     .exec()
     .then(document => {
         if (document) {
