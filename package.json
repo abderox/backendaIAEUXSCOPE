@@ -5,7 +5,8 @@
   "main": "index.js",
   "engines" : { "node" : ">=0.12" },
   "scripts": {
-    "start": "node server.js"
+    "start2": "node server.js",
+    "start": "nodemon server.js"
   },
   "author": "Abdelhadi",
   "license": "ISC",
