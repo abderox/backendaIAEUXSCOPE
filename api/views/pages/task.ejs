@@ -1,0 +1,120 @@
+<html>
+
+    <head>
+        <title>
+          AieuxScope-Tasks
+
+        </title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+    
+    <link rel="stylesheet" href="/css/maicons.css" />
+
+    <link rel="stylesheet" href="/lib/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="/vendor/owl-carousel/css/owl.carousel.css" />
+
+    <link rel="stylesheet" href="/vendor/animate/animate.css" />
+
+    <link rel="stylesheet" href="/css/theme.css" />
+    </head>
+    <body>
+    <header>
+      <%- include('../partials/header'); %></header>
+<section class="container">
+        <h1 align="center">TODO APP</h1>
+
+            <!-- form to create task -->
+        <form action="/create-task" method="POST">
+
+            <table class="table">
+                <thead>
+                  <tr class="table-active">
+                    <th>Task</th>
+                   <th>Description</th>
+                    <th >category</th>
+                    <th >date</th>
+                    <th >Add Task</th>
+                  </tr>
+                </thead>
+            
+            
+                <tbody>
+                    <tr>
+                      <td> <input type="text" name="title"placeholder="Title" required></input></th>
+                      <td> <input type="text" name="description"placeholder="Description" required></input></th>
+                      <td >  <select name="category" required>
+
+                        <option>URGENT</option>
+                        <option>WORK</option>
+                        <option>VISIT</option>
+                        <option>HOUSE</option>
+                        <option>OTHER</option>
+
+                    </select></th>
+                      <td > <input type="date" name="date" required></th>
+                      <td ><input type="submit"  class="btn btn-success"id="add" value="ADD TASK"></th>
+                    </tr>
+                </tbody>
+            
+            </table>
+                  
+  </form>
+    </section>
+        <div style="width:100%;display : flex;flex-direction:column;gap:20px; align-items:center" >          
+                <h1 align="center">TASKS LIST</h1>
+
+                <form action="/delete-task" method="GET"style="width:80%;display : flex;flex-direction:column;gap:20px; align-items:center">
+                    <table class="table table-striped"width="80%">
+                        <thead class="thead-light">
+                            <tr>
+                              <th>Select</th>
+                              <th>Task</th>
+                              <th>Description</th>
+                              <th>Category</th>
+                              <th>Due date</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                             <% for(let i of data.task) { %>
+                            <tr>
+
+                               <td> <input type="checkbox" name="<%= i._id %>" ></td>
+                               <td> <p id="task-description"><%= i.title %></td>
+                               <td> <p id="task-description"><%= i.description %></td>
+                                <td><p id="task-category"></p>: <%= i.category %></td>
+                                <td><p id="due-date">: <%= i.date %></p></td>
+                           </tr>
+                    
+
+                        <% } %>    
+                        </tbody>
+                        
+                
+
+                           
+</table>
+
+<div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE TASK"/>
+</div></form>
+
+
+</div>
+<footer class="page-footer"><%- include('../partials/footer'); %></footer>
+            <script src="/lib/js/jquery-3.1.1.min.js"></script>
+
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+    <script src="/vendor/wow/wow.min.js"></script>
+
+    <script src="/lib/js/theme.js"></script>
+    </body>
+    
+</html>

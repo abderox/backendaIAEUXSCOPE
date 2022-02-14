@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta name="copyright" content="MACode ID, https://macodeid.com/" />
+
+    <title>AieuxScope-AddYeild</title>
+
+    <link rel="stylesheet" href="/css/maicons.css" />
+
+    <link rel="stylesheet" href="/lib/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="/vendor/owl-carousel/css/owl.carousel.css" />
+
+    <link rel="stylesheet" href="/vendor/animate/animate.css" />
+
+    <link rel="stylesheet" href="/css/theme.css" />
+  </head>
+  <body>
+    <!-- Back to top button -->
+    <div class="back-to-top"></div>
+
+    <header><%- include('../partials/header'); %></header>
+
+    <div class="page-section">
+      <div class="container">
+        <h1 class="text-center wow fadeInUp">
+          Select the information of yeild
+        </h1>
+
+        <form class="main-form" action="/addYeild" method="post" id="Form">
+          <div class="row mt-6">
+            <div class="col-10 py-2 wow fadeInLeft">
+              <input
+                name="email"
+                id="email"
+                type="email"
+                class="form-control"
+                placeholder="Email address.."
+                required="true"
+              />
+            </div>
+            <div class="col-10 py-2 wow fadeInRight">
+              <input
+                name="fullName"
+                type="text"
+                class="form-control"
+                placeholder="Full name.."
+                required="true"
+              />
+            </div>
+            <div class="col-10 py-2 wow fadeInRight">
+              <input
+                name="code"
+                id="code"
+                type="number"
+                class="form-control"
+                placeholder="Select code .."
+                required="true"
+                pattern="[0-9]{5}"
+              />
+              <% if(data.error){ %>
+              <label style="color: red"><%= data.error %></label><br />
+              <% }%>
+              <label id="error" style="color: red"></label>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            id="submit"
+            class="btn btn-primary mt-3 wow zoomIn"
+          >
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="page-footer"><%- include('../partials/footer'); %></footer>
+
+    <script src="/lib/js/jquery-3.1.1.min.js"></script>
+
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+    <script src="/vendor/wow/wow.min.js"></script>
+
+    <script src="/lib/js/theme.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="/js/checkCode.js"></script>
+  </body>
+</html>

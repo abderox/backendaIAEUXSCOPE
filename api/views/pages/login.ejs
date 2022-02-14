@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta name="copyright" content="MACode ID, https://macodeid.com/" />
+
+    <title>AieuxScope-Login</title>
+
+    <link rel="stylesheet" href="/css/maicons.css" />
+
+    <link rel="stylesheet" href="/lib/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="/vendor/owl-carousel/css/owl.carousel.css" />
+
+    <link rel="stylesheet" href="/vendor/animate/animate.css" />
+
+    <link rel="stylesheet" href="/css/theme.css" />
+  </head>
+  <body>
+    <!-- Back to top button -->
+    <div class="back-to-top"></div>
+
+    <header><%- include('../partials/header'); %></header>
+
+    <div class="page-section">
+      <div class="container">
+        <h1 class="text-center wow fadeInUp">Login to AieuxScope</h1>
+
+        <form class="main-form" action="/login" method="post">
+          <div class="row mt-6">
+            <div class="col-10 py-2 wow fadeInLeft">
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                placeholder="Email address.."
+                required="true"
+              />
+            </div>
+            <div class="col-10 py-2 wow fadeInRight">
+              <input
+                name="password"
+                type="password"
+                class="form-control"
+                placeholder="Password.."
+                required="true"
+              />
+              <% if(data.error){ %>
+              <label style="color: red"><%= data.error %></label>
+              <% }%>
+            </div>
+            <div class="col-10 py-2 wow fadeInUp">
+              <a href="/register" style="color: rgb(0, 255, 149)"
+                >Create new account ?</a
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-3 wow zoomIn">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="page-footer"><%- include('../partials/footer'); %></footer>
+
+    <script src="/lib/js/jquery-3.1.1.min.js"></script>
+
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+    <script src="/vendor/wow/wow.min.js"></script>
+
+    <script src="/lib/js/theme.js"></script>
+  </body>
+</html>
