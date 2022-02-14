@@ -5,16 +5,17 @@ const Todo = require("../models/Todo");
 // method POST
 exports.createTodo = async (req, res, next) => {
   try {
+    console.log(req.body);
     const toDo = await Todo.create({
       title: req.body.title,
       description: req.body.description,
       category: req.body.category,
       date: req.body.date,
-      user: req.userId,
+      user: req.userData.userId,
       idPerson: null,
     });
     if (!toDo) {
-      return res.status(400).json({
+      return res.status(200).json({
         success: false,
         msg: "Something went wrong",
       });
@@ -26,6 +27,7 @@ exports.createTodo = async (req, res, next) => {
       msg: "Successfully created.",
     });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
@@ -34,7 +36,7 @@ exports.createTodo = async (req, res, next) => {
 
 exports.getAllTodos = async (req, res, next) => {
   try {
-    const todo = await Todo.find({ user: req.userId, finished: false });
+    const todo = await Todo.find({ user: req.userData.userId });
 
     if (!todo) {
       return res
@@ -57,7 +59,7 @@ exports.getAllTodos = async (req, res, next) => {
 
 exports.getAllTodosFinished = async (req, res, next) => {
   try {
-    const todo = await Todo.find({ user: req.userId, finished: true });
+    const todo = await Todo.find({ user: req.userData.userId, finished: true });
 
     if (!todo) {
       return res
